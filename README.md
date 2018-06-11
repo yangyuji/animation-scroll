@@ -18,6 +18,6 @@ this script use like this:
     console.log(el);
   });
 ```
-## 预览
-> * 页面[点击这里](https://yangyuji.github.io/animation-scroll/demo.html)
-> * ![扫描二维码](https://github.com/yangyuji/animation-scroll/blob/master/qrcode.png)
+## preview
+> * page[click here](https://yangyuji.github.io/animation-scroll/demo.html)
+> * ![qrcode](https://github.com/yangyuji/animation-scroll/blob/master/qrcode.png)
