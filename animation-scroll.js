@@ -3,21 +3,30 @@
 * license: "MIT",
 * name: "animation-scroll.js",
 * github: "https://github.com/yangyuji/animation-scroll",
-* version: "1.0.0"
+* version: "1.0.1"
 */
 
 (function (root, factory) {
     if (typeof module != 'undefined' && module.exports) {
         module.exports = factory();
+    } else if (typeof define == 'function' && define.amd) {
+        define( function () { return factory(); } );
     } else {
         root['animationScroll'] = factory();
     }
 }(this, function () {
     'use strict'
 
-    var _getTop = function(element, start) {
-        if(element.nodeName === 'HTML') return -start
-        return element.getBoundingClientRect().top + start
+    var _rAF = window.requestAnimationFrame	||
+        window.webkitRequestAnimationFrame	||
+        window.mozRequestAnimationFrame		||
+        window.oRequestAnimationFrame		||
+        window.msRequestAnimationFrame		||
+        function (callback) { window.setTimeout(callback, 1000 / 60); };
+
+    var _getTop = function(el, start) {
+        if(el.nodeName === 'HTML') return -start
+        return el.getBoundingClientRect().top + start
     }
 
     // ease in out
@@ -59,7 +68,7 @@
                     callback(el);
                 }
             } else {
-                window.requestAnimationFrame(step);
+                _rAF(step);
             }
         }
         step();
